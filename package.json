@@ -1,6 +1,6 @@
 {
   "name": "@minibar/ex-navigation",
-  "version": "2.10.0",
+  "version": "2.10.1",
   "description": "Route-centric navigation library for React Native.",
   "main": "./src/ExNavigation.js",
   "files": [
