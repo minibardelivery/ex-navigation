@@ -306,7 +306,7 @@ class ExNavigationDrawer extends PureComponent<any, Props, State> {
       } else if (!drawerItemProps.noPress) { // We have a spacer in the navigation that should not do anything on press
         drawerItem.onPress = drawerItemOnPress;
       } else {
-        drawerItem.onPress = () => { console.info('noop nav press'); }
+        drawerItem.onPress = () => {} // noop
       }
 
       drawerItem.onLongPress = drawerItemProps.onLongPress;
