@@ -303,7 +303,7 @@ class ExNavigationDrawer extends PureComponent<any, Props, State> {
 
       if (typeof drawerItemProps.onPress === 'function') {
         drawerItem.onPress = drawerItem.onPress.bind(this, drawerItemOnPress);
-      } else {
+      } else if (!drawerItemProps.noPress) {
         drawerItem.onPress = drawerItemOnPress;
       }
 
