@@ -29,7 +29,7 @@ if (expoModule) {
 
 const MB_BLACK = '#222';
 const isIos = Platform.OS === 'ios';
-const hasNotch = DeviceInfo.hasNotch();
+const hasNotch = DeviceInfo.hasNotch() || _.startsWith(DeviceInfo.getDeviceName(), 'iPhone X');
 
 // Exponent draws under the status bar on Android, but vanilla React Native does not.
 // So we need to factor the status bar height in with Exponent but can ignore it with
