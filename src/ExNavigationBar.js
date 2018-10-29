@@ -12,7 +12,7 @@ import {
   ViewPropTypes,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import * as DeviceInfo from 'react-native-device-info';
+import DeviceInfo from 'react-native-device-info';
 import PureComponent from './utils/PureComponent';
 import { unsupportedNativeView } from './ExUnsupportedNativeView';
 import { withNavigation } from './ExNavigationComponents';
