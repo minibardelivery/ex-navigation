@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import {
   Animated,
   Dimensions,
@@ -11,7 +12,7 @@ import {
   ViewPropTypes,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import * as DeviceInfo from 'react-native-device-info';
+import DeviceInfo from 'react-native-device-info';
 import PureComponent from './utils/PureComponent';
 import { unsupportedNativeView } from './ExUnsupportedNativeView';
 import { withNavigation } from './ExNavigationComponents';
@@ -28,7 +29,7 @@ if (expoModule) {
 
 const MB_BLACK = '#222';
 const isIos = Platform.OS === 'ios';
-const isIphoneX = DeviceInfo.getModel() === 'iPhone X';
+const hasNotch = DeviceInfo.hasNotch() || _.startsWith(DeviceInfo.getDeviceName(), 'iPhone X');
 
 // Exponent draws under the status bar on Android, but vanilla React Native does not.
 // So we need to factor the status bar height in with Exponent but can ignore it with
@@ -36,7 +37,7 @@ const isIphoneX = DeviceInfo.getModel() === 'iPhone X';
 let STATUSBAR_HEIGHT = global.__exponent ? 24 : 0;
 
 if (isIos) {
-  STATUSBAR_HEIGHT = isIphoneX ? 44 : 20
+  STATUSBAR_HEIGHT = hasNotch ? 44 : 20
 }
 
 const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 55;
@@ -412,7 +413,7 @@ const styles = StyleSheet.create({
     // TODO(brentvatne): come up with a better solution for making the
     // elevation show up properly on Android
     paddingBottom: Platform.OS === 'android' ? 16 : 0,
-    backgroundColor: isIphoneX ? MB_BLACK : undefined,
+    backgroundColor: hasNotch ? MB_BLACK : undefined,
   },
 
   wrapperWithoutAppbar: {
@@ -437,10 +438,10 @@ const styles = StyleSheet.create({
     left: 0,
     position: 'absolute',
     right: 0,
-    top: isIphoneX ? 24 : 0,
+    top: hasNotch ? 24 : 0,
   },
   appbarSolid: {
-    backgroundColor: isIphoneX ? MB_BLACK : ExNavigationBar.DEFAULT_BACKGROUND_COLOR,
+    backgroundColor: hasNotch ? MB_BLACK : ExNavigationBar.DEFAULT_BACKGROUND_COLOR,
   },
   appbarTranslucent: {
     backgroundColor: 'rgba(255,255,255,0.7)',
