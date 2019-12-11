@@ -30,6 +30,7 @@ if (expoModule) {
 const MB_BLACK = '#222';
 const isIos = Platform.OS === 'ios';
 const hasNotch = DeviceInfo.hasNotch()
+  || Platform.OS === 'ios'
   || _.startsWith(DeviceInfo.getDeviceName(), 'iPhone X')
   || _.startsWith(DeviceInfo.getDeviceName(), 'iPhone 1');
 
