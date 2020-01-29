@@ -91,7 +91,7 @@ const titleStyles = StyleSheet.create({
       android: {
         fontSize: 20,
         // fontFamily: 'sans-serif-medium',
-        textAlign: 'left',
+        textAlign: 'center',
       },
     }),
   },
